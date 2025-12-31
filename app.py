@@ -14,21 +14,21 @@ from nltk.stem import PorterStemmer
 # ------------------ WARNINGS ------------------
 warnings.filterwarnings("ignore", category=UserWarning)
 
-# ------------------ PATH FIX (CRITICAL) ------------------
+# ------------------ PATH FIX ------------------
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-# ------------------ NLTK SETUP (DEPLOYMENT SAFE) ------------------
-nltk_data_dir = os.path.join(BASE_DIR, "nltk_data")
-if not os.path.exists(nltk_data_dir):
-    os.makedirs(nltk_data_dir)
+# ------------------ NLTK SETUP (CRITICAL FIX) ------------------
+nltk_resources = [
+    "punkt",
+    "punkt_tab",
+    "stopwords"
+]
 
-nltk.data.path.append(nltk_data_dir)
-
-try:
-    stopwords.words("english")
-except LookupError:
-    nltk.download("stopwords", download_dir=nltk_data_dir)
-    nltk.download("punkt", download_dir=nltk_data_dir)
+for resource in nltk_resources:
+    try:
+        nltk.data.find(resource)
+    except LookupError:
+        nltk.download(resource)
 
 # ------------------ NLP TOOLS ------------------
 port_stemmer = PorterStemmer()
