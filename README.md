@@ -90,7 +90,7 @@ https://archive.ics.uci.edu/ml/datasets/SMS+Spam+Collection
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/your-username/SMS-Spam-Detection.git
+git clone https://github.com/yashh1975/SMS-Spam-Detection.git
 cd SMS-Spam-Detection
 ```
 ### 2. Install Dependencies
